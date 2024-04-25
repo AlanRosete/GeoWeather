@@ -10,7 +10,6 @@ import { useContext } from 'react'
 
 export default function CurrentDayCard() {
   const { current, degreeType, forecast } = useContext(WeatherContext)
-
   return (
     <div
       className='relative z-0 grid grid-cols-1 gap-y-3 md:gap-y-0 gap-x-0 md:gap-x-3 md:grid-cols-3   delay-200 duration-700 transform opacity-0 transition-all translate-y-12 ease-out'

@@ -9,7 +9,7 @@ import useDate from '../hooks/useDate'
 
 export default function MainPanel() {
   const [active, setActive] = useState(0)
-  const { time, date } = useDate()
+  const { time, date, times } = useDate()
   const { address, forecast } = useContext(WeatherContext)
   useEffect(() => {
     const transition = () => {
@@ -39,13 +39,22 @@ export default function MainPanel() {
           >
             <div>
               <h2 className='text-xl font-bold dark:text-gray-100'>
-                Local time:
+                Consult time:
               </h2>
               <h2 className='font-bold text-7xl dark:text-gray-100'>
                 {time || ''}
               </h2>
               <h2 className='col-span-2 text-2xl dark:text-gray-100'>
                 {date || ''}{' '}
+              </h2>
+            </div>
+
+            <div className='flex items-center absolute right-0 top-[-34px]'>
+              <h2 className='text-xl font-bold dark:text-gray-100'>
+                Local time:
+              </h2>
+              <h2 className='font-bold text-7xl dark:text-gray-100'>
+                {times || ''}
               </h2>
             </div>
 

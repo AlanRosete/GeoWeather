@@ -4,7 +4,7 @@ export default function Footer() {
       <a
         className='font-bold'
         target='_blank'
-        href='portafolio-alan1.netlify.app'
+        href='https://portafolio-alan1.netlify.app/'
         rel='noreferrer'
       >
         Portfolio.dev
@@ -14,7 +14,7 @@ export default function Footer() {
           Made with ❤️ &nbsp;by{' '}
           <a
             target='_blank'
-            href='https://www.linkedin.com/in/alan-rosete-m-20ba03216'
+            href='#'
             rel='noreferrer'
           >
             Alan Rosete
