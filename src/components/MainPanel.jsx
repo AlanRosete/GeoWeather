@@ -49,13 +49,13 @@ export default function MainPanel() {
               </h2>
             </div>
 
-            <div className='flex items-center absolute right-0 top-[-38px]'>
-              <h2 className='text-xl font-bold dark:text-gray-100'>
+            <div className='flex items-center absolute right-0 top-[-38px] gap-2'>
+              <h7 className='text-xs font-bold dark:text-gray-100'>
                 Local time:
-              </h2>
-              <h2 className='font-bold text-7xl dark:text-gray-100'>
+              </h7>
+              <h7 className='font-bold text-4xl dark:text-gray-100'>
                 {times || ''}
-              </h2>
+              </h7>
             </div>
 
             <div className='w-full col-span-1 gap-3 text-left md:col-span-2'>
