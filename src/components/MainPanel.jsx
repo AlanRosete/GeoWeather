@@ -37,7 +37,7 @@ export default function MainPanel() {
             className='relative z-20 grid items-start w-full grid-cols-1 grid-rows-2 md:grid-cols-3 md:grid-rows-1 sm:items-center delay-150 duration-700 transform opacity-0 transition-all translate-y-12 ease-out '
             data-replace='{ "translate-y-12": "translate-y-0", "opacity-0": "opacity-100" }'
           >
-            <div className='sm: flex flex-col relative top-6'>
+            <div className='sm: flex flex-col relative top-5'>
               <h2 className='text-xl font-bold dark:text-gray-100'>
                 Consult time:
               </h2>
