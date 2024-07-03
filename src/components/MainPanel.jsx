@@ -11,6 +11,7 @@ export default function MainPanel() {
   const [active, setActive] = useState(0)
   const { time, date, times } = useDate()
   const { address, forecast } = useContext(WeatherContext)
+  console.log(address)
   useEffect(() => {
     const transition = () => {
       setTimeout(function () {

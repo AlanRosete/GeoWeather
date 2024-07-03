@@ -1,15 +1,23 @@
 import { useContext, useState } from 'react'
-
 import PlacesAutocomplete from 'react-places-autocomplete/dist/PlacesAutocomplete'
 import { WeatherContext } from '../../context/WeatherContextProvider'
+import { COUNTRIES_AND_CITIES } from '../Const'
 
 export default function SearchBar() {
   const [input, setInput] = useState('')
   const { searchWeather } = useContext(WeatherContext)
+  
+  const filteredCountries = COUNTRIES_AND_CITIES.filter(country =>
+    country.toLowerCase().includes(input.toLowerCase())
+  )
+  
   return (
     <form className='relative z-10 grid grid-cols-2 '>
       <PlacesAutocomplete
-        onChange={(address) => setInput(address)}
+        onChange={(address) => {
+          setInput(address)
+          console.log(filteredCountries) 
+        }}
         value={input}
         onSelect={(newAddress, placeId, suggestion) => {
           searchWeather({ newAddress })
@@ -28,11 +36,15 @@ export default function SearchBar() {
             />
             <div className='absolute z-50 max-w-xs p-3 bg-white border rounded top-15 h-fit empty:hidden border-cardGray place-self-start'>
               {loading && ''}
+              {filteredCountries.map((country, index) => (
+                <div key={index} style={{ cursor: 'pointer' }}>
+                  <span>{country}</span>
+                </div>
+              ))}
               {suggestions.map((suggestion) => {
                 const className = suggestion.active
                   ? 'mt-2 border-b border-solid border-cardGray'
                   : 'mt-2 border-b border-dashed border-cardGray'
-                // inline style for demonstration purpose
                 const style = suggestion.active
                   ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                   : { backgroundColor: '#ffffff', cursor: 'pointer' }
