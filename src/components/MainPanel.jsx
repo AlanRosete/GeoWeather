@@ -75,7 +75,6 @@ export default function MainPanel() {
             </div>
           </div>
 
-
           <h2
             className='relative -z-10 my-5 text-3xl delay-200 duration-700 transform opacity-0 transition-all translate-y-12 ease-out dark:text-gray-100'
             data-replace='{ "translate-y-12": "translate-y-0", "opacity-0": "opacity-100" }'
