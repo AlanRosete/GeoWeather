@@ -7,17 +7,9 @@ export default function SearchBar() {
   const [input, setInput] = useState('')
   const { searchWeather } = useContext(WeatherContext)
 
-
   const filteredCountries = COUNTRIES_AND_CITIES.filter(country =>
     country.toLowerCase().includes(input.toLowerCase())
   )
-
-  const handleCountryClick = (country) => {
-    setInput(country)
-    searchWeather({ newAddress: country })
-    setInput("")
-  }
-
 
   const handleCountryClick = (country) => {
     setInput(country)
@@ -31,10 +23,8 @@ export default function SearchBar() {
         onChange={(address) => {
           setInput(address)
           console.log(filteredCountries)
-          console.log(filteredCountries)
         }}
         value={input}
-
 
         onSelect={(newAddress, placeId, suggestion) => {
           searchWeather({ newAddress })
@@ -44,7 +34,6 @@ export default function SearchBar() {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className='w-full col-span-3 md:col-end-4 md:col-span-2'>
-          <div className='w-full col-span-3 md:col-end-4 md:col-span-2'>
             <input
               {...getInputProps({
                 placeholder: 'Search Places ...',
@@ -53,9 +42,7 @@ export default function SearchBar() {
               })}
             />
             <div className='absolute z-50 p-3 bg-white border rounded top-15 h-fit empty:hidden border-cardGray place-self-start w-6/12'>
-            <div className='absolute z-50 p-3 bg-white border rounded top-15 h-fit empty:hidden border-cardGray place-self-start w-6/12'>
               {loading && ''}
-
 
               {suggestions.map((suggestion) => {
                 const className = suggestion.active
@@ -64,7 +51,6 @@ export default function SearchBar() {
                 const style = suggestion.active
                   ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                   : { backgroundColor: '#ffffff', cursor: 'pointer' }
-
 
                 return (
                   <div
