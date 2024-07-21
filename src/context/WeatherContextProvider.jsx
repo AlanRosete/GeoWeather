@@ -1,9 +1,9 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useReducer } from 'react';
 
-import { OPTIONS } from '../components/Const'
-import WeatherReducer from './WeatherReducer'
+import { OPTIONS } from '../components/Const';
+import WeatherReducer from './WeatherReducer';
 
-export const WeatherContext = createContext()
+export const WeatherContext = createContext();
 const initialState = {
   error: '',
   current: {},
@@ -14,36 +14,36 @@ const initialState = {
   address: '',
   initialCords: {},
   degreeType: 'C'
-}
+};
 
 export default function WeatherContextProvider(props) {
-  const [state, dispatch] = useReducer(WeatherReducer, initialState)
+  const [state, dispatch] = useReducer(WeatherReducer, initialState);
 
   const getWeather = async (location) => {
-    const { latitude, longitude } = location
+    const { latitude, longitude } = location;
 
-    dispatch({ type: 'SET_COORDS', payload: location })
-    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${latitude}%2C${longitude}&days=3`
+    dispatch({ type: 'SET_COORDS', payload: location });
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${latitude}%2C${longitude}&days=3`;
     const defaultUrl =
-      'https://weatherapi-com.p.rapidapi.com/forecast.json?q=London&days=3'
-    // const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${IPv4}&days=3`
+      'https://weatherapi-com.p.rapidapi.com/forecast.json?q=London&days=3';
     fetch(location == null ? defaultUrl : url, OPTIONS)
       .then((res) => res.json())
       .then((data) => {
         dispatch({
           type: 'GET_WEATHER',
           payload: data
-        })
-        const { location } = data
-        const { name, region, country } = location
+        });
+        const { location } = data;
+        const { name, region, country } = location;
         dispatch({
           type: 'CHANGE_ADDRESS',
           payload: `${name}, ${region}, ${country}`
-        })
-      })
-  }
+        });
+      });
+  };
+
   const searchWeather = ({ newAddress }) => {
-    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${newAddress}&days=3`
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${newAddress}&days=3`;
     try {
       fetch(url, OPTIONS)
         .then((res) => {
@@ -52,31 +52,32 @@ export default function WeatherContextProvider(props) {
               dispatch({
                 type: 'SET_ERROR',
                 payload: data.error.message
-              })
-            })
-            throw new Error(res.statusText)
+              });
+            });
+            throw new Error(res.statusText);
           } else {
-            return res.json()
+            return res.json();
           }
         })
         .then((data) => {
           dispatch({
             type: 'SEARCH_WEATHER',
             payload: data
-          })
-          const { location } = data
-          const { name, region, country } = location
+          });
+          const { location } = data;
+          const { name, region, country } = location;
           dispatch({
             type: 'CHANGE_ADDRESS',
             payload: `${name}, ${region}, ${country}`
-          })
-        })
+          });
+        });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
+
   const searchWeatherByLatLng = ({ lat, lng }) => {
-    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${lat}%2C${lng}&days=3`
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${lat}%2C${lng}&days=3`;
     try {
       fetch(url, OPTIONS)
         .then((res) => {
@@ -85,31 +86,32 @@ export default function WeatherContextProvider(props) {
               dispatch({
                 type: 'SET_ERROR',
                 payload: data.error.message
-              })
-            })
-            throw new Error(res.statusText)
+              });
+            });
+            throw new Error(res.statusText);
           } else {
-            return res.json()
+            return res.json();
           }
         })
         .then((data) => {
           dispatch({
             type: 'SEARCH_WEATHER',
             payload: data
-          })
-          const { location } = data
-          const { name, region, country } = location
+          });
+          const { location } = data;
+          const { name, region, country } = location;
           dispatch({
             type: 'CHANGE_ADDRESS',
             payload: `${name}, ${region}, ${country}`
-          })
-        })
+          });
+        });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
+
   const refreshWeather = ({ address }) => {
-    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${address}&days=3`
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${address}&days=3`;
     try {
       fetch(url, OPTIONS)
         .then((res) => res.json())
@@ -117,18 +119,20 @@ export default function WeatherContextProvider(props) {
           dispatch({
             type: 'REFRESH_WEATHER',
             payload: data
-          })
-        })
+          });
+        });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
+
   const changeDegreeType = (degreeType) => {
     dispatch({
       type: 'CHANGE_DEGREES',
       payload: degreeType
-    })
-  }
+    });
+  };
+
   return (
     <WeatherContext.Provider
       value={{
@@ -147,5 +151,5 @@ export default function WeatherContextProvider(props) {
     >
       {props.children}
     </WeatherContext.Provider>
-  )
+  );
 }

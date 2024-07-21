@@ -1,5 +1,4 @@
 import { memo, useContext, useEffect, useState } from 'react'
-
 import { GoogleMap } from '@react-google-maps/api'
 import { WeatherContext } from '../../context/WeatherContextProvider'
 
