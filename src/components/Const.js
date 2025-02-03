@@ -25,7 +25,7 @@ export const OPTIONS = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
-    'X-RapidAPI-Key': '2c9def7ff9msh9694b4a32b1be6cp146ff6jsnd33a36f39afd'
+    'X-RapidAPI-Key': '55aef8f261mshe3d9a247429798fp102692jsn6a573c5a8a85'
   }
 }
 export const COUNTRIES_AND_CITIES = [
